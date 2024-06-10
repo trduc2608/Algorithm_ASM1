@@ -14,6 +14,8 @@ public class Main {
            System.out.println("4. Search Students");
            System.out.println("5. Sort Students");
            System.out.println("6. Display Students");
+           System.out.println("7. Merge Sort");
+           System.out.println("8. Quick Sort");
            System.out.println("0. Exit");
 
            int choice = sc.nextInt();
@@ -61,6 +63,16 @@ public class Main {
                case 6:
                    sms.displayStudents();
                    break;
+               case 7:
+                   sms.mergeSortStudents();
+                   System.out.println("Sorted Students with Merge Sort: ");
+                   sms.displayStudents();
+                   break;
+               case 8:
+                   sms.quickSortStudents();
+                   System.out.println("Sorted Students with Quick Sort: ");
+                   sms.displayStudents();
+                   break;
                case 0:
                    System.exit(0);
                    break;
@@ -68,7 +80,5 @@ public class Main {
                    System.out.println("Invalid choice. Try again.");
            }
        }
-
-
     }
 }

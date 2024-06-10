@@ -1,8 +1,8 @@
 public class Student {
-    public String ID;
-    public String name;
-    public double mark;
-    public String rank;
+    private String ID;
+    private String name;
+    private double mark;
+    private String rank;
 
     public Student(String ID, String name, double mark) {
         this.ID = ID;
@@ -33,8 +33,17 @@ public class Student {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public double getMark() {
         return mark;
+    }
+
+    public void setMark(double mark) {
+        this.mark = mark;
+        this.rank = findRanking();
     }
 
     public String getRank() {
@@ -43,7 +52,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student ID:" + ID + ", Name:" + name + ", Mark:" + mark + ", Rank=" + rank;
+        return "Student ID: " + ID + ", Name: " + name + ", Mark: " + mark + ", Rank: " + rank;
     }
 }
 
