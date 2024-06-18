@@ -15,7 +15,7 @@ public class Main {
            System.out.println("5. Sort Students");
            System.out.println("6. Display Students");
            System.out.println("7. Merge Sort");
-           System.out.println("8. Quick Sort");
+//           System.out.println("8. Quick Sort");
            System.out.println("0. Exit");
 
            int choice = sc.nextInt();
@@ -24,16 +24,21 @@ public class Main {
            switch(choice){
                case 1:
                    System.out.println("Enter Student ID: ");
-                   String studentID = sc.nextLine();
+                   int studentID = sc.nextInt();
+                   sc.nextLine();
+
                    System.out.println("Enter Student Name: ");
                    String studentName = sc.nextLine();
+
                    System.out.println("Enter Student Mark: ");
                    double studentMark = sc.nextDouble();
+
                    sms.addStudent(studentID, studentName, studentMark);
                    break;
                case 2:
                    System.out.println("Enter Student ID to edit: ");
-                   studentID = sc.nextLine();
+                   studentID = sc.nextInt();
+                   sc.nextLine();
                    System.out.println("Enter new Student Name: ");
                    studentName = sc.nextLine();
                    System.out.println("Enter new Student Mark: ");
@@ -42,12 +47,12 @@ public class Main {
                    break;
                case 3:
                    System.out.println("Enter Student ID to delete: ");
-                   studentID = sc.nextLine();
+                   studentID = sc.nextInt();
                    sms.deleteStudent(studentID);
                    break;
                case 4:
                    System.out.println("Enter Student ID to search: ");
-                   studentID = sc.nextLine();
+                   studentID = sc.nextInt();
                    Student student = sms.searchStudent(studentID);
                    if(student != null){
                        System.out.println(student);
@@ -57,7 +62,7 @@ public class Main {
                    break;
                case 5:
                    sms.sortStudents();
-                   System.out.println("Sorted Students by marks: ");
+                   System.out.println("Sorted Students by marks(highest to lowest): ");
                    sms.displayStudents();
                    break;
                case 6:
@@ -65,14 +70,14 @@ public class Main {
                    break;
                case 7:
                    sms.mergeSortStudents();
-                   System.out.println("Sorted Students with Merge Sort: ");
+                   System.out.println("Sorted Students by marks(lowest to highest): ");
                    sms.displayStudents();
                    break;
-               case 8:
-                   sms.quickSortStudents();
-                   System.out.println("Sorted Students with Quick Sort: ");
-                   sms.displayStudents();
-                   break;
+//               case 8:
+//                   sms.quickSortStudents();
+//                   System.out.println("Sorted Students with Quick Sort: ");
+//                   sms.displayStudents();
+//                   break;
                case 0:
                    System.exit(0);
                    break;

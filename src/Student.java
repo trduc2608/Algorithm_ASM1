@@ -1,10 +1,10 @@
 public class Student {
-    private String ID;
+    private int ID;
     private String name;
     private double mark;
     private String rank;
 
-    public Student(String ID, String name, double mark) {
+    public Student(int ID, String name, double mark) {
         this.ID = ID;
         this.name = name;
         this.mark = mark;
@@ -25,7 +25,7 @@ public class Student {
         }
     }
 
-    public String getID() {
+    public int getID() {
         return ID;
     }
 

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 
 public class StudentInformationSystem {
     private ArrayList<Student> students;
@@ -8,7 +9,7 @@ public class StudentInformationSystem {
         this.students = new ArrayList<>();
     }
 
-    public void addStudent(String ID, String name, double mark) {
+    public void addStudent(int ID, String name, double mark) {
         if(searchStudent(ID) == null) {
             this.students.add(new Student(ID, name, mark));
         } else {
@@ -16,9 +17,9 @@ public class StudentInformationSystem {
         }
     }
 
-    public void editStudent(String ID, String newName, double newMark) {
+    public void editStudent(int ID, String newName, double newMark) {
         for (Student student : students) {
-            if (student.getID().equals(ID)) {
+            if (student.getID() == ID) {
                 student.setName(newName);
                 student.setMark(newMark);
                 break;
@@ -26,13 +27,20 @@ public class StudentInformationSystem {
         }
     }
 
-    public void deleteStudent(String ID) {
-        students.removeIf(student -> student.getID().equals(ID));
+    public void deleteStudent(int ID) {
+//        students.removeIf(student -> student.getID() == ID);
+        for(Iterator<Student> iterator = students.iterator(); iterator.hasNext();) {
+            Student student = iterator.next();
+            if(student.getID() == ID) {
+                iterator.remove();
+                break;
+            }
+        }
     }
 
-    public Student searchStudent(String ID) {
+    public Student searchStudent(int ID) {
         for(Student student : students) {
-            if (student.getID().equals(ID)) {
+            if (student.getID() == ID) {
                 return student;
             }
         }
@@ -40,7 +48,7 @@ public class StudentInformationSystem {
     }
 
     public void sortStudents() {
-        students.sort(Comparator.comparingDouble(student -> student.getMark()));
+        students.sort(Comparator.comparingDouble(Student::getMark).reversed());
     }
 
     public void displayStudents() {
@@ -50,7 +58,9 @@ public class StudentInformationSystem {
     }
 
     public void mergeSortStudents() {
-        if (students.isEmpty()) return;
+        if (students.isEmpty()) {
+            return;
+        }
         students = mergeSort(new ArrayList<>(students));
     }
 
@@ -78,38 +88,6 @@ public class StudentInformationSystem {
         merged.addAll(left);
         merged.addAll(right);
         return merged;
-    }
-
-    public void quickSortStudents() {
-        if (students.isEmpty()) return;
-        quickSort(0, students.size() - 1);
-    }
-
-    private void quickSort(int start, int end) {
-        if (start < end) {
-            int partitionIndex = partition(start, end);
-            quickSort(start, partitionIndex - 1);
-            quickSort(partitionIndex + 1, end);
-        }
-    }
-
-    private int partition(int start, int end) {
-        Student pivot = students.get(end);
-        int i = (start - 1);
-        for (int j = start; j < end; j++) {
-            if (students.get(j).getMark() <= pivot.getMark()) {
-                i++;
-                Student temp = students.get(i);
-                students.set(i, students.get(j));
-                students.set(j, temp);
-            }
-        }
-
-        Student temp = students.get(i + 1);
-        students.set(i + 1, students.get(end));
-        students.set(end, temp);
-
-        return i + 1;
     }
 
 }
