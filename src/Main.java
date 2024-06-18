@@ -12,9 +12,9 @@ public class Main {
            System.out.println("2. Edit Student");
            System.out.println("3. Delete Student");
            System.out.println("4. Search Students");
-           System.out.println("5. Sort Students");
+           System.out.println("5. Sorted Students(highest to lowest");
            System.out.println("6. Display Students");
-           System.out.println("7. Merge Sort");
+           System.out.println("7. Sorted Students(lowest to highest)");
 //           System.out.println("8. Quick Sort");
            System.out.println("0. Exit");
 
