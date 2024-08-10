@@ -42,7 +42,7 @@ public class StudentInformationSystem {
     }
 
     public Student searchStudent(int ID) {
-        sortStudents();
+        mergeSortStudents();
         return binarySearchStudent(ID);
     }
 
